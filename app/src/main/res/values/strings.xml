@@ -68,6 +68,7 @@
     <string name="yes_choice">Registou o incêndio com sucesso!</string>
     <string name="no_choice">Cancelou o registo</string>
     <string name="district_hint">Distrito</string>
+    <string name="district_error">Introduza o distrito em que se encontra</string>
 
 
 </resources>

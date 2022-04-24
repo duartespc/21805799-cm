@@ -24,11 +24,12 @@ class FireFormFragment : Fragment() {
     lateinit var cc: EditText
     lateinit var button: Button
     lateinit var builder: AlertDialog.Builder
-    lateinit var concelho: EditText
+    lateinit var district: EditText
 
-    var concelhosPortugal: HashSet<String> = hashSetOf("Sintra","Ericeira","Mafra")
+    var districtsPortugal: HashSet<String> = hashSetOf("Aveiro","Beja","Braga","Bragança","Castelo Branco","Coimbra","Évora",
+        "Faro","Guarda","Leiria","Lisboa","Portalegre","Porto","Santarém","Setúbal","Viana do Castelo","Vila Real","Viseu")
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_fire_form, container, false)
         binding = FragmentFireFormBinding.bind(view)
         builder = AlertDialog.Builder(context)
@@ -42,7 +43,7 @@ class FireFormFragment : Fragment() {
         name = binding.name
         cc = binding.cc
         button = binding.button
-        concelho = binding.concelho
+        district = binding.district
     }
 
 
@@ -51,9 +52,9 @@ class FireFormFragment : Fragment() {
         return TextUtils.isEmpty(str)
     }
 
-    fun isValidConcelho(text:EditText): Boolean {
+    fun isValidDistrict(text:EditText): Boolean {
         val str: CharSequence = text.text.toString()
-        return str.isEmpty()
+        return districtsPortugal.contains(str)
     }
 
     fun isValidCCNumber(text: EditText): Boolean {
@@ -63,16 +64,16 @@ class FireFormFragment : Fragment() {
 
     fun onSubmit() {
         val entryCurrentDate: String = SimpleDateFormat("dd-MM-yyyy").format(Date())
-        val entryCurrentTime: String = SimpleDateFormat("HH:mm:ss").format(Date())
+        val entryCurrentTime: String = SimpleDateFormat("HH:mm").format(Date())
 
         if (isEmpty(name)) {
-            name.setError(getString(R.string.name_error));
+            name.setError(getString(R.string.name_error))
         }
         if (isValidCCNumber(cc) ) {
-            cc.setError(getString(R.string.cc_error));
+            cc.setError(getString(R.string.cc_error))
         }
-        if (isEmpty(concelho)) {
-            concelho.setError(getString(R.string.concelho_error));
+        if (isEmpty(district)) {
+            district.setError(getString(R.string.district_error))
         }
 
         if (!isEmpty(name) && !isEmpty(cc) && entryCurrentDate.isNotBlank() && entryCurrentTime.isNotBlank()) {

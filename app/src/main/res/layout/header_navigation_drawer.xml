@@ -16,7 +16,9 @@
     <ImageView
         android:layout_width="250dp"
         android:layout_height="115dp"
-        android:src="@mipmap/fire"></ImageView>
+        android:src="@mipmap/fire"
+        android:contentDescription="logo">
+    </ImageView>
 
     <TextView
         android:layout_width="wrap_content"

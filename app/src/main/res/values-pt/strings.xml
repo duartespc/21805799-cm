@@ -51,4 +51,5 @@
     <string name="submit">Submeter</string>
     <string name="vehicles">Veículos:</string>
     <string name="district_hint">Distrito</string>
+    <string name="district_error">Introduza o distrito em que se encontra</string>
 </resources>

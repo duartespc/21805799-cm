@@ -48,7 +48,8 @@
     <string name="dialog_title">Confirmation</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="yes_choice">You reported a fire sucessfuly</string>
+    <string name="yes_choice">You reported a fire successfully</string>
     <string name="no_choice">You canceled the report</string>
     <string name="district_hint">District</string>
+    <string name="district_error">Enter a valid concelho</string>
 </resources>

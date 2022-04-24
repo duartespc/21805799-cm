@@ -37,7 +37,7 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="@string/current_state" />
 
         <TextView
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black" />
 
     </LinearLayout>
@@ -62,7 +62,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black"
             android:text="@string/district" />
 
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black" />
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="@string/concelho" />
 
         <TextView
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black" />
 
 
@@ -111,7 +111,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="@string/freguesia" />
 
         <TextView
@@ -130,7 +130,7 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="@string/date" />
 
         <TextView
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black" />
 
         <TextView
@@ -150,7 +150,7 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="@string/hour" />
 
         <TextView
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="8dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -171,7 +171,7 @@
         android:layout_marginStart="5dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:text="@string/observations" />
 
     <TextView
@@ -180,7 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="8dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
 
         android:textColor="@color/black"/>
 
@@ -197,7 +197,7 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="@string/name" />
 
         <TextView
@@ -208,7 +208,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:text="@string/info_not_available"
-            android:textSize="14dp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/text_cc"
@@ -218,7 +218,7 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16dp"
+            android:textSize="16sp"
 
             android:text="@string/cc" />
 
@@ -230,7 +230,7 @@
             android:layout_marginTop="8dp"
             android:textColor="@color/black"
             android:text="@string/info_not_available"
-            android:textSize="14dp"/>
+            android:textSize="14sp"/>
     </LinearLayout>
 
     <TextView
@@ -242,14 +242,16 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:text="@string/pictures"
-        android:textSize="16dp"/>
+        android:textSize="16sp"/>
 
     <ImageView
         android:layout_width="287dp"
         android:layout_height="123dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_history"></ImageView>
+        android:contentDescription="upload">
+
+    </ImageView>
 
 
 
