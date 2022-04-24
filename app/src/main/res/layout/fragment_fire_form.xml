@@ -25,7 +25,8 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/nameHint"/>
+        android:hint="@string/nameHint"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/cc"
@@ -34,17 +35,19 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="@string/ccHint"/>
+        android:hint="@string/ccHint"
+        android:minHeight="48dp" />
 
     <EditText
-    android:id="@+id/district"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="15dp"
-    android:layout_marginTop="50dp"
-    android:ems="10"
-    android:hint="@string/district_hint"
-    android:autofillHints="@string/district_hint" />
+        android:id="@+id/district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:autofillHints="@string/district_hint"
+        android:ems="10"
+        android:hint="@string/district_hint"
+        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/text_pictures"
@@ -63,16 +66,35 @@
         android:layout_height="100dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:src="@mipmap/upload"></ImageView>
+        android:src="@mipmap/upload">
 
-    <Button
-        android:id="@+id/button"
+    </ImageView>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/red"
-        android:text="@string/submit" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/gray"
+            android:text="@string/submit" />
+
+        <Button
+            android:id="@+id/report_now_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/red"
+            android:text="@string/reportNow" />
+
+    </LinearLayout>
+
 
 
 </LinearLayout>

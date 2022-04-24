@@ -27,9 +27,72 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="@string/no_fires_available"/>
-
-
-
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/options_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/red"
+            android:tint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_menu_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="SpeakableTextPresentCheck"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/report_fire_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/red"
+            android:tint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@mipmap/fire_on"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/options_button"
+            app:layout_constraintEnd_toEndOf="@+id/options_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/asc_filter_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/red"
+            android:tint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@mipmap/sort_ascending_icon"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/report_fire_button"
+            app:layout_constraintEnd_toEndOf="@+id/report_fire_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/desc_filter_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/red"
+            android:tint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@mipmap/sort_descending_icon"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/asc_filter_button"
+            app:layout_constraintEnd_toEndOf="@+id/asc_filter_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

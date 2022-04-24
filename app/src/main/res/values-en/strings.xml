@@ -11,7 +11,7 @@
     <string name="fires_list">Fires List</string>
     <string name="fires_map">Fires Map</string>
     <string name="about">About</string>
-    <string name="about_text">This app is a project for the Mobile Computing course of the degree of Computer Engineering of Universidade Lusófona de Humanidades e Tecnologia</string>
+    <string name="about_text">This app is a project for the Mobile Computing course of the degree of Computer Engineering at Universidade Lusófona de Humanidades e Tecnologia</string>
     <string name="about_credit">Made by: Duarte Cambra</string>
     <string name="info_not_available">Information not available</string>
     <string name="location">Location:</string>
@@ -52,4 +52,15 @@
     <string name="no_choice">You canceled the report</string>
     <string name="district_hint">District</string>
     <string name="district_error">Enter a valid concelho</string>
+    <string name="settings">Settings</string>
+    <string name="not_available">Not available</string>
+    <string name="distance">Distance:</string>
+    <string name="away">km from you</string>
+    <string name="reportNow">Report Now!</string>
+    <string name="location_not_found">Location not found</string>
+    <string name="battery_saving_functionality">Deactivate risk by location updates when low on battery</string>
+    <string name="apply">Apply</string>
+    <string name="sort">Sort</string>
+    <string name="closer">Closer to me</string>
+    <string name="farther">Farther to me</string>
 </resources>

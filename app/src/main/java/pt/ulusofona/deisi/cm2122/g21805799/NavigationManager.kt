@@ -2,6 +2,8 @@ package pt.ulusofona.deisi.cm2122.g21805799
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import pt.ulusofona.deisi.cm2122.g21805799.activities.*
+import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FireUI
 
 object NavigationManager {
 
@@ -28,12 +30,17 @@ object NavigationManager {
         placeFragment(fm, AboutFragment())
     }
 
-    fun goToFiresMapFragment(fm: FragmentManager) {
-        placeFragment(fm, FiresMapFragment())
+
+    fun goToFireDetail(fm: FragmentManager, fire: FireUI) {
+        placeFragment(fm, FireDetailFragment.newInstance(fire))
     }
 
-    fun goToFireDetail(fm: FragmentManager, fire: FireUi) {
-        placeFragment(fm, FireDetailFragment.newInstance(fire))
+    fun goToMapFragment(fm: FragmentManager) {
+        placeFragment(fm, MapsFragment())
+    }
+
+    fun goToSettingsFragment(fm: FragmentManager) {
+        placeFragment(fm, SettingsFragment())
     }
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">FogosTugas</string>
+    <string name="app_name" translatable="false">NoSmog</string>
     <string name="drawer_open">Aberto</string>
     <string name="drawer_closed">Fechado</string>
     <string name="registry_saved">Registo guardado</string>
@@ -23,9 +23,6 @@
     <string name="today_fires">Hoje</string>
     <string name="this_week_fires">Esta semana</string>
     <string name="this_month_fires">Este mês</string>
-
-
-
 
 
     <string name="registered_at">Registado em:</string>
@@ -69,6 +66,17 @@
     <string name="no_choice">Cancelou o registo</string>
     <string name="district_hint">Distrito</string>
     <string name="district_error">Introduza o distrito em que se encontra</string>
+    <string name="settings">Definições</string>
+    <string name="not_available">Não disponível</string>
+    <string name="distance">Distância:</string>
+    <string name="away">km de ti</string>
+    <string name="reportNow">Reporta Já!</string>
+    <string name="location_not_found">A localização não foi encontrada</string>
+    <string name="battery_saving_functionality">Desativar atualizações de risco por localização com bateria baixa</string>
+    <string name="apply">Aplicar</string>
+    <string name="sort">Ordenar</string>
+    <string name="closer">Mais perto de mim</string>
+    <string name="farther">Mais longe de mim</string>
 
 
 </resources>

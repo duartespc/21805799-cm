@@ -13,7 +13,7 @@
 
     <RelativeLayout
         android:layout_width="378dp"
-        android:layout_height="98dp">
+        android:layout_height="134dp">
 
         <!--ImageVIew to display our Course Image-->
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_state"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="40dp"
             android:text="@string/date"
             android:textColor="@color/black"
             android:textSize="13sp"
@@ -67,28 +67,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/text_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/current_state"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <!--Text View to display Course Name-->
-
-        <!--Text VIew to display COurse Rating-->
-        <!--Image used in present in drawable folder-->
-
-        <TextView
             android:id="@+id/state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/text_state"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -159,6 +142,45 @@
             android:textColor="@color/black"
             android:textSize="13sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_hour"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/distance"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_hour"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_distance"
+            android:text="@string/info_not_available"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/away"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_hour"
+            android:layout_toStartOf="@+id/distance"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/distance"
+            android:text="@string/away"
+            android:visibility="invisible"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
