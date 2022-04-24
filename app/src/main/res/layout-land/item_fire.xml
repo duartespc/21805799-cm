@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="3dp"
+    app:cardMaxElevation="4dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="99dp">
+
+        <!--First Column to display our Course Image-->
+
+        <TextView
+            android:id="@+id/text_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/current_state"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_state"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_state"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/date"
+            android:theme="@style/ItemTitleTheme"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_state"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_date"
+            android:theme="@style/ItemValueTheme"/>
+
+        <TextView
+            android:id="@+id/text_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_date"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+
+            android:text="@string/hour"
+            android:theme="@style/ItemTitleTheme"/>
+        <TextView
+            android:id="@+id/hour_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_date"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_toEndOf="@+id/text_hour"
+            android:theme="@style/ItemValueTheme"/>
+
+
+
+        <!--Second Column -->
+
+        <TextView
+            android:id="@+id/text_district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/district"
+            android:theme="@style/ItemTitleTheme"/>
+
+        <TextView
+            android:id="@+id/district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_district"
+            android:theme="@style/ItemValueTheme" />
+
+        <TextView
+            android:id="@+id/text_concelho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_district"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/concelho"
+            android:theme="@style/ItemTitleTheme" />
+
+        <TextView
+            android:id="@+id/concelho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/district"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_concelho"
+            android:theme="@style/ItemValueTheme" />
+
+        <TextView
+            android:id="@+id/text_freguesia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_concelho"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/freguesia"
+            android:theme="@style/ItemTitleTheme" />
+
+        <TextView
+            android:id="@+id/freguesia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_concelho"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+
+            android:layout_toEndOf="@+id/text_freguesia"
+            android:theme="@style/ItemValueTheme"/>
+
+        <!-- Third Column -->
+
+        <TextView
+            android:id="@+id/text_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="400dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/location"
+            android:theme="@style/ItemTitleTheme"/>
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_location"
+            android:theme="@style/ItemValueTheme"/>
+
+        <TextView
+            android:id="@+id/text_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_location"
+            android:layout_marginStart="400dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/created"
+            android:theme="@style/ItemTitleTheme" />
+        <TextView
+            android:id="@+id/created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_location"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_created"
+            android:theme="@style/ItemValueTheme"/>
+
+        <TextView
+            android:id="@+id/text_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_created"
+            android:layout_marginStart="400dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/updated"
+            android:theme="@style/ItemTitleTheme" />
+        <TextView
+            android:id="@+id/updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_created"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_updated"
+            android:theme="@style/ItemValueTheme"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+

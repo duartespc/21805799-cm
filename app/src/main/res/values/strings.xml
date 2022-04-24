@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name" translatable="false">FogosTugas</string>
+    <string name="drawer_open">Aberto</string>
+    <string name="drawer_closed">Fechado</string>
+    <string name="registry_saved">Registo guardado</string>
+    <string name="no_fires_available">Sem dados disponíves</string>
+    <string name="dashboard">Painel de Informações</string>
+    <string name="fires">Fogos</string>
+    <string name="risk">Risco:</string>
+    <string name="map">Mapa:</string>
+    <string name="fires_list">Lista de Fogos</string>
+    <string name="fires_map">Mapa de Fogos</string>
+    <string name="about">Sobre</string>
+    <string name="about_text">Esta aplicação é um trabalho para a UC de Computação Móvel do curso de Engenharia Informática da Universidade Lusófona de Humanidades e Tecnologia</string>
+    <string name="about_credit">Feito por: Duarte Cambra</string>
+
+    <string name="info_not_available">Informação não disponível</string>
+    <string name="location">Localização:</string>
+    <string name="created">Criado em:</string>
+    <string name="updated">Atualizado em:</string>
+
+    <string name="active_fires">Ativos</string>
+    <string name="today_fires">Hoje</string>
+    <string name="this_week_fires">Esta semana</string>
+    <string name="this_month_fires">Este mês</string>
+
+
+
+
+
+    <string name="registered_at">Registado em:</string>
+    <string name="district">Distrito:</string>
+    <string name="concelho" translatable="false">Concelho:</string>
+    <string name="concelho_hint" translatable="false">Concelho</string>
+    <string name="freguesia" translatable="false">Freguesia:</string>
+    <string name="used_means">Meios Utilizados:</string>
+    <string name="terrain">Operacionais:</string>
+    <string name="vehicles">Veículos:</string>
+    <string name="aerial">Aéreos:</string>
+    <string name="current_state">Estado atual:</string>
+    <string name="pictures">Fotografia (opcional):</string>
+    <string name="pictures2">Fotografia</string>
+    <string name="observations">Observações:</string>
+
+    <string name="name">Nome:</string>
+    <string name="nameHint">Nome</string>
+    <string name="cc">CC:</string>
+    <string name="ccHint">CC</string>
+    <string name="date">Data:</string>
+    <string name="hour">Hora:</string>
+
+    <string name="risk_for_this_concelho">Moderado</string>
+
+    <string name="report_fire">Reportar incêndio</string>
+
+    <string name="form_title">Registo de incêndio</string>
+    <string name="dialog_message">Deseja confirmar?</string>
+    <string name="submit">Submeter</string>
+
+    <string name="name_error">Introduza o seu nome</string>
+    <string name="cc_error">Introduza um número de CC válido</string>
+    <string name="concelho_error">Introduza o concelho em que se encontra</string>
+
+    <string name="dialog_title">Confirmação</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+
+    <string name="yes_choice">Registou o incêndio com sucesso!</string>
+    <string name="no_choice">Cancelou o registo</string>
+    <string name="district_hint">Distrito</string>
+
+
+</resources>

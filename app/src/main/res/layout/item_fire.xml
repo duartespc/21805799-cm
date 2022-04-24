@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="2dp"
+    app:cardMaxElevation="2dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="378dp"
+        android:layout_height="98dp">
+
+        <!--ImageVIew to display our Course Image-->
+
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_state"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/date"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_state"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@+id/text_date"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_date"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/hour"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hour_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_date"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="14dp"
+            android:layout_toEndOf="@+id/text_hour"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/current_state"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!--Text View to display Course Name-->
+
+        <!--Text VIew to display COurse Rating-->
+        <!--Image used in present in drawable folder-->
+
+        <TextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/text_state"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/concelho"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/district"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/text_district"
+            android:drawablePadding="2dp"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/freguesia"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/concelho"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@+id/text_concelho"
+            android:drawablePadding="2dp"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/district"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/text_district"
+            android:drawablePadding="2dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/text_district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/district"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_concelho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_district"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="9dp"
+            android:text="@string/concelho"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_freguesia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_concelho"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="9dp"
+            android:text="@string/freguesia"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+
+
