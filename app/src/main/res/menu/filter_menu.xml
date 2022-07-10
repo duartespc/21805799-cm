@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/group1">
+        <item
+            app:actionViewClass="android.widget.Spinner"
+            app:actionLayout="@layout/switch_menu"
+            android:id="@+id/nav_dashboard"
+            android:title="@string/submit" />
+    </group>
+
+
+</menu>
