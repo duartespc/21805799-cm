@@ -1,8 +1,11 @@
 package pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels
 
 import android.app.Application
+import android.location.Location
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import pt.ulusofona.deisi.cm2122.g21805799.data.FiresRepository
 import pt.ulusofona.deisi.cm2122.g21805799.model.DataManager
@@ -10,14 +13,19 @@ import pt.ulusofona.deisi.cm2122.g21805799.model.DataManager
 class FiresViewModel(application: Application): AndroidViewModel(application) {
 
     private val model: DataManager = FiresRepository.getInstance()
+    private lateinit var mFusedLocationClient: FusedLocationProviderClient
+
+
+
+
 
     fun getDashboardInfo(onFinished: (Array<String>) -> Unit) {
         // Gets fires an ArrayList so they can be added to the DashBoard
         // index[0] - active fires
         // index[1] - fires today
         // index[2] - fires this week
-        // index[3] - fires this month
-        var responseArray = Array(4) { "0" }
+        // index[3] - fires this month -- can't be retrieved from WS after all
+        val responseArray = Array(4) { "0" }
         model.getActiveFiresTotal {
             responseArray.set(0, it)
             model.getLast7DaysTotal {

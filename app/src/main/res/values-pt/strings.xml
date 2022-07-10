@@ -63,4 +63,6 @@
     <string name="sort">Ordenar</string>
     <string name="closer">Mais perto de mim</string>
     <string name="farther">Mais longe de mim</string>
+    <string name="report_now_dialog_message">Vai reportar um fogo na sua localização atual. Deseja confirmar?</string>
+    <string name="reported">Reportado</string>
 </resources>

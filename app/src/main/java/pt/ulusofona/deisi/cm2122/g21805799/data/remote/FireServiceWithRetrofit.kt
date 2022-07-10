@@ -68,6 +68,7 @@ class FireServiceWithRetrofit(val retrofit: Retrofit, val context: Context): Dat
                     }
                     visited.add(word)
                 }
+                Log.i("APP", "getRisk response: $response")
                 onFinished(response)
             } catch (e: Exception) { // TENTEI SUBSTITUIR HttpException por Exception geral
                 Log.i("APP", "CATCHED HTTPEXCEPTION calling getRisk(municipality)")

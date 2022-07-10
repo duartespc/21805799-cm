@@ -34,6 +34,8 @@ import pt.ulusofona.deisi.cm2122.g21805799.model.Fire
 import pt.ulusofona.deisi.cm2122.g21805799.R
 import pt.ulusofona.deisi.cm2122.g21805799.data.FiresRepository
 import pt.ulusofona.deisi.cm2122.g21805799.databinding.FragmentFireFormBinding
+import java.lang.Integer.parseInt
+import java.lang.Long.parseLong
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
@@ -59,7 +61,6 @@ class FireFormFragment : Fragment() {
     private var districtsPortugal: HashSet<String> = hashSetOf("aveiro","beja","braga","bragança","castelo Branco","coimbra","évora",
         "faro","guarda","leiria","lisboa","portalegre","porto","santarém","setúbal","viana do Castelo","vila Real","viseu")
 
-
     private fun isLocationEnabled(): Boolean {
         val locationManager: LocationManager =
             requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -67,7 +68,6 @@ class FireFormFragment : Fragment() {
             LocationManager.NETWORK_PROVIDER
         )
     }
-
 
     private fun checkPermissions(): Boolean {
         if (ActivityCompat.checkSelfPermission(
@@ -83,6 +83,7 @@ class FireFormFragment : Fragment() {
         }
         return false
     }
+
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             requireActivity(),
@@ -94,14 +95,12 @@ class FireFormFragment : Fragment() {
         )
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_fire_form, container, false)
         binding = FragmentFireFormBinding.bind(view)
         builder = AlertDialog.Builder(context)
-        builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title)
+        builder.setMessage(getString(R.string.dialog_message)) .setTitle(getString(R.string.dialog_title))
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
         return binding.root
     }
 
@@ -123,7 +122,6 @@ class FireFormFragment : Fragment() {
         reportNowButton = binding.reportNowButton
         district = binding.district
     }
-
 
     private fun isEmpty(text: EditText): Boolean {
         val str: CharSequence = text.text.toString()
@@ -147,7 +145,7 @@ class FireFormFragment : Fragment() {
         if (isEmpty(name)) {
             name.error = getString(R.string.name_error)
         }
-        if (isValidCCNumber(cc) ) {
+        if (!isValidCCNumber(cc) ) {
             cc.error = getString(R.string.cc_error)
         }
         if (isEmpty(district) || !isValidDistrict(district)) {
@@ -168,7 +166,7 @@ class FireFormFragment : Fragment() {
                                 Toast.LENGTH_SHORT).show()
                         model.insertFire(
                             Fire("Manual", entryCurrentDate, entryCurrentTime, "", 0, 0, 0, district.text.toString(), "", "", latitude, longitude,
-                                0, "Em Curso", "", "", true, 1234, 1234567, "Nenhuma", name.text.toString(), cc.text.toString())) {
+                                0, "Em Curso", "", "", true, Date().time.toInt(), Date().time.toInt(), getString(R.string.not_available), name.text.toString(), cc.text.toString())) {
                         }
                         activity?.onBackPressed()
                     }
@@ -192,19 +190,18 @@ class FireFormFragment : Fragment() {
                         val geocoder = Geocoder(requireContext(), Locale.getDefault())
                         val list: List<Address> =
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                        Log.i("APP", "Latitude:${list[0].latitude}, Longitude${list[0].longitude}, Localidty:${list[0].locality}, Endereço:${list[0].getAddressLine(0)}, SubLocality: ${list[0].subLocality}")
 
                         if (!list.isEmpty()) {
                             val entryCurrentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
                             val entryCurrentTime: String = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
-                            builder.setMessage(R.string.dialog_message)
+                            builder.setMessage(R.string.report_now_dialog_message)
                                 .setCancelable(false)
                                 .setPositiveButton(R.string.yes) { _dialog, _id ->
-                                    Toast.makeText(activity, R.string.yes_choice,
+                                    Toast.makeText(activity, getString(R.string.yes_choice),
                                         Toast.LENGTH_SHORT).show()
                                     model.insertFire(
-                                        Fire("Manual", entryCurrentDate, entryCurrentTime, "Sintra", 0, 0, 0, "Beja", "Ávela", "Afim", list[0].latitude, list[0].longitude,
-                                            0, "Em Curso", list[0].locality, list[0].getAddressLine(0), true, 1234, 1234567, context?.resources!!.getString(R.string.not_available), "ReportaJa", "000000000")) {
+                                        Fire("Manual", entryCurrentDate, entryCurrentTime, list[0].locality, -1, -1, -1, context?.resources!!.getString(R.string.not_available), context?.resources!!.getString(R.string.not_available), context?.resources!!.getString(R.string.not_available), list[0].latitude, list[0].longitude,
+                                            0, context?.resources!!.getString(R.string.reported), list[0].subLocality.orEmpty(), list[0].getAddressLine(0).orEmpty(), true, Date().time.toInt(), Date().time.toInt(), context?.resources!!.getString(R.string.not_available), "ReportaJa", "000000000")) {
                                     }
                                     activity?.onBackPressed()
                                 }

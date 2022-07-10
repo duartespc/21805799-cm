@@ -10,6 +10,7 @@ import pt.ulusofona.deisi.cm2122.g21805799.R
 import pt.ulusofona.deisi.cm2122.g21805799.databinding.ItemFireBinding
 import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FireUI
 import java.lang.Integer.parseInt
+import java.text.SimpleDateFormat
 import java.util.*
 
 class FiresListAdapter(
@@ -30,6 +31,7 @@ class FiresListAdapter(
     }
 
     override fun onBindViewHolder(holder: FiresListViewHolder, position: Int) {
+        val distance = "${items[position].distanceFromMe} km"
         holder.binding.district.text = items[position].district
         holder.binding.concelho.text = items[position].concelho
         holder.binding.freguesia.text = items[position].freguesia
@@ -37,11 +39,16 @@ class FiresListAdapter(
         holder.binding.date.text = items[position].date
         holder.binding.hourItem.text = items[position].hour
         holder.binding.location?.text = items[position].location
-        holder.binding.created?.text = items[position].created.toString()
-        holder.binding.updated?.text = items[position].updated.toString()
-        holder.binding.distance?.text = items[position].distanceFromMe
+        holder.binding.distance?.text = distance
         holder.binding.away?.visibility = View.VISIBLE
         holder.itemView.setOnClickListener { onClick(items[position]) }
+
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(Date())
+        val timeCreated = dateFormat.format(items[position].created.toString())
+        val timeUpdated = dateFormat.format(items[position].updated.toString())
+
+        holder.binding.created?.text = timeCreated
+        holder.binding.updated?.text = timeUpdated
     }
 
     override fun getItemCount() = items.size

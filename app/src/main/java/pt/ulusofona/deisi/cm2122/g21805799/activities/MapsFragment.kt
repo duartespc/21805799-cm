@@ -17,6 +17,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.deisi.cm2122.g21805799.NavigationManager
 import pt.ulusofona.deisi.cm2122.g21805799.R
 import pt.ulusofona.deisi.cm2122.g21805799.databinding.FragmentMapsBinding
@@ -24,6 +27,7 @@ import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FireUI
 import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FiresViewModel
 import java.util.*
 import kotlin.collections.HashMap
+import kotlin.math.roundToInt
 
 
 class MapsFragment : Fragment() {
@@ -33,14 +37,31 @@ class MapsFragment : Fragment() {
     val fires: ArrayList<FireUI> = ArrayList()
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
 
-
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FiresViewModel::class.java)
-        viewModel.getAllFires { it.map {
-            fires.add(it)
-        } }
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        var lastLatitude: Double = 0.0
+        var lastLongitude: Double = 0.0
+
+        viewModel.getAllFires {
+            it.map {
+                mFusedLocationClient.lastLocation
+                    .addOnSuccessListener { location : Location? ->
+                        if (location != null) {
+                            lastLatitude = location.latitude
+                            lastLongitude = location.longitude
+                        }
+                        val result = FloatArray(1)
+                        Location.distanceBetween(it.lat, it.lng, lastLatitude, lastLongitude, result)
+                        val resultKm: Int = (result[0]/1000).roundToInt()
+                        it.distanceFromMe = "$resultKm km"
+                    }
+                fires.add(it)
+            }
+        }
+
     }
 
 

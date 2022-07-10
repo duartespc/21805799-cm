@@ -105,27 +105,27 @@ class FiresListFragment : Fragment() {
 
     private fun setAnimation(clicked: Boolean) {
         if (!clicked) {
-            binding.optionsButton?.startAnimation(rotateOpen)
-            binding.reportFireButton?.startAnimation(fromBottom)
-            binding.ascFilterButton?.startAnimation(fromBottom)
-            binding.descFilterButton?.startAnimation(fromBottom)
+            binding.optionsButton.startAnimation(rotateOpen)
+            binding.reportFireButton.startAnimation(fromBottom)
+            binding.ascFilterButton.startAnimation(fromBottom)
+            binding.descFilterButton.startAnimation(fromBottom)
         } else {
-            binding.optionsButton?.startAnimation(rotateClose)
-            binding.reportFireButton?.startAnimation(toBottom)
-            binding.ascFilterButton?.startAnimation(toBottom)
-            binding.descFilterButton?.startAnimation(toBottom)
+            binding.optionsButton.startAnimation(rotateClose)
+            binding.reportFireButton.startAnimation(toBottom)
+            binding.ascFilterButton.startAnimation(toBottom)
+            binding.descFilterButton.startAnimation(toBottom)
         }
     }
 
     private fun setClickable(clicked: Boolean) {
         if(!clicked) {
-            binding.reportFireButton?.isClickable = true
-            binding.ascFilterButton?.isClickable = true
-            binding.descFilterButton?.isClickable = true
+            binding.reportFireButton.isClickable = true
+            binding.ascFilterButton.isClickable = true
+            binding.descFilterButton.isClickable = true
         } else {
-            binding.reportFireButton?.isClickable = false
-            binding.ascFilterButton?.isClickable = false
-            binding.descFilterButton?.isClickable = false
+            binding.reportFireButton.isClickable = false
+            binding.ascFilterButton.isClickable = false
+            binding.descFilterButton.isClickable = false
 
         }
     }
@@ -149,8 +149,6 @@ class FiresListFragment : Fragment() {
                     val result = FloatArray(1)
                     Location.distanceBetween(it.lat, it.lng, lastLatitude, lastLongitude, result)
                     val resultKm: Int = (result[0]/1000).roundToInt()
-                    Log.i("APP", "Lat: ${it.lat} Lng: ${it.lng} Minha lat: $lastLatitude Minha lng: $lastLongitude Distancia: $resultKm")
-
                     FireUI(it.id, it.date, it.hour, it.location, it.aerial, it.man, it.terrain, it.district, it.concelho, it.freguesia, it.lat, it.lng,
                         it.statusCode, it.status, it.localidade, it.detailLocation, it.active, it.created, it.updated, it.observations, it.name, it.cc, "$resultKm") }
                 CoroutineScope(Dispatchers.Main).launch {
@@ -158,7 +156,6 @@ class FiresListFragment : Fragment() {
                     adapter.updateItems(list)
                 }
             }
-
     }
 
     private fun showList(show: Boolean) {

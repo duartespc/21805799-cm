@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.subtitle = "${getString(R.string.risk)} ${getString(R.string.not_available)}"
         setContentView(binding.root)
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        handler.postDelayed(highBatteryLooper, 20000)
+        handler.postDelayed(highBatteryLooper, 2000)
 
         if (!screenRotated(savedInstanceState)) {
             NavigationManager.goToDashboardFragment(supportFragmentManager)
@@ -110,8 +110,7 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             Log.i("APP", "model.getRisk is EMPTY")
                         }
-                    }
-                    else {
+                    } else {
                         Log.i("APP","Location == null")
                     }
                 }
@@ -185,14 +184,11 @@ class MainActivity : AppCompatActivity() {
                 Log.i("APP", "HIGH BatteryLooper, risk: $lastRisk,   delay: 20000")
                 handler.postDelayed(this, 20000)
             }
-            //binding.toolbar.subtitle = "${getString(R.string.risk)} $lastRisk"
-
         }
     }
 
     // This looper only updates risk according to location if battery percentage > 20%
     // If battery is lower than 20% check again in 1m
-
     val lowBatteryLooper = object: Runnable {
         override fun run() {
             // Call battery manager service
@@ -227,17 +223,15 @@ class MainActivity : AppCompatActivity() {
         Log.i("APP", "Started low battery Looper, delay: 20000!")
         handler.postDelayed(lowBatteryLooper, 20000)
     }
-
-    fun stopLowBatteryLooper() {
-        Log.i("APP", "Stopped low battery Looper!")
-        handler.removeCallbacks(lowBatteryLooper)
-    }
-
     fun startHighBatteryLooper() {
         Log.i("APP", "Started low battery Looper, delay: 20000!")
         handler.postDelayed(highBatteryLooper, 20000)
     }
 
+    fun stopLowBatteryLooper() {
+        Log.i("APP", "Stopped low battery Looper!")
+        handler.removeCallbacks(lowBatteryLooper)
+    }
     fun stopHighBatteryLooper() {
         Log.i("APP", "Stopped high battery Looper!")
         handler.removeCallbacks(highBatteryLooper)

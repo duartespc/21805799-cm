@@ -25,7 +25,7 @@ class DashBoardFragment : Fragment() {
         view.setBackgroundColor(Color.GRAY)
         binding = FragmentDashboardBinding.bind(view)
         viewModel = ViewModelProvider(this).get(FiresViewModel::class.java)
-        return binding.root
+        return binding.root 
     }
 
     override fun onStart() {

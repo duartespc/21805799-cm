@@ -28,5 +28,5 @@ data class FireUI(
     val observations: String,
     val name: String,
     val cc: String,
-    val distanceFromMe : String
+    var distanceFromMe : String
 ) : Parcelable

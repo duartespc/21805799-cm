@@ -18,7 +18,6 @@ class FiresRepository private constructor(val local: DataManager, val remote: Da
                 local.clearAllFires {
                     Log.i("APP", "Cleared DB")
                     local.insertAllFires(fires) {
-                        Log.i("APP","Inserted all fires got from WebService!")
                         local.getAllFires (onFinished)
                         //onFinished(fires) If user is on-line, this only shows the fires got from web service, not the ones in local storage
                     }
@@ -37,18 +36,17 @@ class FiresRepository private constructor(val local: DataManager, val remote: Da
                 onFinished(it)
             }
         } else {
-            onFinished("0")
+            onFinished("")
         }
     }
 
     override fun getActiveFiresTotal(onFinished: (String) -> Unit) {
         if (ConnectivityUtil.isOnline(context)) {
-            Log.i("APP", "App is online. Getting DashBoard Info from the server...")
             remote.getActiveFiresTotal {
                 onFinished(it)
             }
         } else {
-            onFinished("0")
+            onFinished("")
         }
     }
 

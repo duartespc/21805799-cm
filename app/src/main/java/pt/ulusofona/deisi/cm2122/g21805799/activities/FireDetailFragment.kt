@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import pt.ulusofona.deisi.cm2122.g21805799.R
 import pt.ulusofona.deisi.cm2122.g21805799.databinding.FragmentFireDetailBinding
 import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FireUI
-import java.util.*
 
 private const val ARG_FIRE = "ARG_FIRE"
 

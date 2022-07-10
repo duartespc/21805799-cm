@@ -72,9 +72,9 @@ class FireDBWithRoom(private val storage: FireOperations, val context: Context):
                 active = fire.active,
                 created = fire.created,
                 updated = fire.updated,
-                observations = fire.observations.toString(),
-                name = fire.name.toString(),
-                cc = fire.cc.toString()
+                observations = fire.observations,
+                name = fire.name,
+                cc = fire.cc
             )
             storage.insert(fireDb)
             Log.i("APP", "Manually Inserted Fire name:${fire.name} in DB")

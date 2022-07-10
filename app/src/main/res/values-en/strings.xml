@@ -51,16 +51,18 @@
     <string name="yes_choice">You reported a fire successfully</string>
     <string name="no_choice">You canceled the report</string>
     <string name="district_hint">District</string>
-    <string name="district_error">Enter a valid concelho</string>
+    <string name="district_error">Enter a valid district</string>
     <string name="settings">Settings</string>
     <string name="not_available">Not available</string>
     <string name="distance">Distance:</string>
     <string name="away">km from you</string>
     <string name="reportNow">Report Now!</string>
     <string name="location_not_found">Location not found</string>
-    <string name="battery_saving_functionality">Deactivate risk by location updates when low on battery</string>
+    <string name="battery_saving_functionality">Deactivate updating risk for current location, when low on battery</string>
     <string name="apply">Apply</string>
     <string name="sort">Sort</string>
     <string name="closer">Closer to me</string>
     <string name="farther">Farther to me</string>
+    <string name="report_now_dialog_message">You are going to report a fire at your current location. Are you sure?</string>
+    <string name="reported">Reported</string>
 </resources>
