@@ -224,22 +224,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun startLowBatteryLooper() {
-        Log.i("APP", "Started low battery Looper, delay: 20000")
+        Log.i("APP", "Started low battery Looper, delay: 20000!")
         handler.postDelayed(lowBatteryLooper, 20000)
     }
 
     fun stopLowBatteryLooper() {
-        Log.i("APP", "Stopped low battery Looper")
+        Log.i("APP", "Stopped low battery Looper!")
         handler.removeCallbacks(lowBatteryLooper)
     }
 
     fun startHighBatteryLooper() {
-        Log.i("APP", "Started low battery Looper, delay: 20000")
+        Log.i("APP", "Started low battery Looper, delay: 20000!")
         handler.postDelayed(highBatteryLooper, 20000)
     }
 
     fun stopHighBatteryLooper() {
-        Log.i("APP", "Stopped high battery Looper")
+        Log.i("APP", "Stopped high battery Looper!")
         handler.removeCallbacks(highBatteryLooper)
     }
 
