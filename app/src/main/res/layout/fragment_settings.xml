@@ -38,6 +38,20 @@
             android:layout_marginStart="20dp">
         </com.google.android.material.switchmaterial.SwitchMaterial>
 
+        <TextView
+            android:text="@string/turn_off_reportaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/second_switch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp">
+        </com.google.android.material.switchmaterial.SwitchMaterial>
+
         <Button
             android:id="@+id/submit_button"
             android:layout_width="wrap_content"

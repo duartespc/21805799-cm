@@ -3,10 +3,12 @@ package pt.ulusofona.deisi.cm2122.g21805799.activities
 import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -35,6 +37,7 @@ class MapsFragment : Fragment() {
     private lateinit var binding: FragmentMapsBinding
     private lateinit var viewModel: FiresViewModel
     val fires: ArrayList<FireUI> = ArrayList()
+    val firesReportedByMe: ArrayList<FireUI> = ArrayList()
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
 
     @SuppressLint("MissingPermission")
@@ -70,6 +73,7 @@ class MapsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_maps, container, false)
         binding = FragmentMapsBinding.bind(view)
 
+
         // Use this to get FireUI when clicking on a marker so it can retrieve the correct fire to be passed to fireDetailFragment
         val markerMap = HashMap<Marker, FireUI>()
 
@@ -86,6 +90,10 @@ class MapsFragment : Fragment() {
         supportMapFragment!!.getMapAsync { googleMap ->
 
             for (fire in fires) {
+                if (fire.name.contains("ReportaJa") || fire.id.contains("Manual")) {
+                    firesReportedByMe.add(fire)
+                    Log.i("APP", "Adding fire reported by you with name: ${fire.name} ID: ${fire.id}")
+                }
                 Log.i("APP", "Adding marker at lat: ${fire.lat} lng: ${fire.lng}")
                 // Initialize marker options
                 val markerOptions = MarkerOptions()
@@ -104,6 +112,9 @@ class MapsFragment : Fragment() {
                 if (marker != null)
                     markerMap.put(marker, fire)
             }
+
+            Toast.makeText(activity, firesReportedByMe.count().toString(),
+                Toast.LENGTH_SHORT).show()
 
             // Zoom in on user's location
             mFusedLocationClient.lastLocation

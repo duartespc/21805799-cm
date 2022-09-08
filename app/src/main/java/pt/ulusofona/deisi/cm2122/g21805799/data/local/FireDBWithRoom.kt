@@ -10,9 +10,31 @@ import pt.ulusofona.deisi.cm2122.g21805799.data.local.dao.FireOperations
 import pt.ulusofona.deisi.cm2122.g21805799.data.local.entities.FireDB
 import pt.ulusofona.deisi.cm2122.g21805799.model.DataManager
 import pt.ulusofona.deisi.cm2122.g21805799.model.Fire
+import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FireUI
+import java.util.ArrayList
 
 
 class FireDBWithRoom(private val storage: FireOperations, val context: Context): DataManager() {
+
+    override fun getReportedByMeFires(onFinished: (String) -> Unit) {
+        val firesReportedByMe: MutableList<Fire> = ArrayList()
+        CoroutineScope(Dispatchers.IO).launch {
+            getAllFires {
+                it.map {
+                    Log.i("APP",it.name)
+                    Log.i("APP", it.id)
+                    if (it.name.equals("ReportaJa") || it.id.equals("Manual")) {
+                        firesReportedByMe.add(it)
+                    }
+                }
+            }
+            onFinished(firesReportedByMe.count().toString())
+        }
+    }
+
+    override fun getDistrict(latitude: String, longitude: String, onFinished: (String) -> Unit) {
+        TODO("Not yet implemented")
+    }
 
     override fun insertAllFires(fires: List<Fire>, onFinished: () -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {

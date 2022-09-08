@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private val permissionId = 2
 
+
     private lateinit var lastRisk: String
 
     override fun onCreate(savedInstanceState: Bundle?) {

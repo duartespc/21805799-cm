@@ -94,6 +94,20 @@
             app:layout_constraintEnd_toEndOf="@+id/asc_filter_button"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/today_filter_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/red"
+            android:tint="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/desc_filter_button"
+            app:layout_constraintEnd_toEndOf="@+id/desc_filter_button"
+            tools:ignore="SpeakableTextPresentCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView

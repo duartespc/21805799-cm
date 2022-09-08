@@ -9,6 +9,9 @@ abstract class DataManager() {
     abstract fun getRisk(municipality: String, onFinished: (String) -> Unit)
     abstract fun getLast7DaysTotal(onFinished: (String) -> Unit)
     abstract fun getActiveFiresTotal(onFinished: (String) -> Unit)
+    abstract fun getReportedByMeFires(onFinished: (String) -> Unit)
+    abstract fun getDistrict(latitude: String, longitude: String, onFinished: (String) -> Unit)
+
 
 
     /*abstract fun getLastFire(onFinished: (Fire) -> Unit)

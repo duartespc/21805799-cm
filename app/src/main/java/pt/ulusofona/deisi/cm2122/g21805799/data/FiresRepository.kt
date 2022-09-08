@@ -9,6 +9,19 @@ import pt.ulusofona.deisi.cm2122.g21805799.model.DataManager
 import java.lang.IllegalStateException
 
 class FiresRepository private constructor(val local: DataManager, val remote: DataManager, val context: Context): DataManager() {
+    var reportaJaOn: Boolean = true
+
+    fun isReportaJaOn (onFinished: (Boolean) -> Unit) {
+        onFinished(reportaJaOn)
+    }
+
+    fun setReportaJaOn () {
+        reportaJaOn = true
+    }
+
+    fun setReportaJaOff () {
+        reportaJaOn = false
+    }
 
     override fun getAllFires(onFinished: (List<Fire>) -> Unit) {
         if (ConnectivityUtil.isOnline(context)) {
@@ -40,6 +53,12 @@ class FiresRepository private constructor(val local: DataManager, val remote: Da
         }
     }
 
+    override fun getReportedByMeFires(onFinished: (String) -> Unit) {
+        local.getReportedByMeFires {
+            onFinished(it)
+        }
+    }
+
     override fun getActiveFiresTotal(onFinished: (String) -> Unit) {
         if (ConnectivityUtil.isOnline(context)) {
             remote.getActiveFiresTotal {
@@ -63,6 +82,17 @@ class FiresRepository private constructor(val local: DataManager, val remote: Da
 
     override fun clearAllFires(onFinished: () -> Unit) {
         throw Exception("Illegal operation")
+    }
+
+    override fun getDistrict(latitude: String, longitude: String, onFinished: (String) -> Unit) {
+        if (ConnectivityUtil.isOnline(context)) {
+            Log.i("APP", "App is online. Getting risk from the server...")
+            remote.getDistrict(latitude, longitude) {
+                onFinished(it)
+            }
+        } else {
+            onFinished(context.resources.getString(R.string.info_not_available))
+        }
     }
 
     override fun getRisk(municipality: String, onFinished: (String) -> Unit) {

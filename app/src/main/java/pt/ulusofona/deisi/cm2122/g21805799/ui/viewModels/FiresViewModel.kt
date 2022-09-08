@@ -16,9 +16,6 @@ class FiresViewModel(application: Application): AndroidViewModel(application) {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
 
 
-
-
-
     fun getDashboardInfo(onFinished: (Array<String>) -> Unit) {
         // Gets fires an ArrayList so they can be added to the DashBoard
         // index[0] - active fires

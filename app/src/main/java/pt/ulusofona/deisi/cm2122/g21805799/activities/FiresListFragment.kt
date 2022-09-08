@@ -79,6 +79,10 @@ class FiresListFragment : Fragment() {
             adapter.getSortDescendingFilter().filter("")
         }
 
+        binding.todayFilterButton?.setOnClickListener {
+            adapter.getTodayFilter().filter("")
+        }
+
         viewModel = ViewModelProvider(this).get(FiresViewModel::class.java)
         viewModel.getAllFires { updateList(it) }
     }
@@ -94,12 +98,17 @@ class FiresListFragment : Fragment() {
     private fun setVisibility(clicked: Boolean) {
         if (!clicked) {
             binding.reportFireButton?.visibility = View.VISIBLE
+            binding.reportFireButton?.visibility = View.VISIBLE
             binding.ascFilterButton?.visibility = View.VISIBLE
             binding.descFilterButton?.visibility = View.VISIBLE
+            binding.todayFilterButton?.visibility = View.VISIBLE
+
         } else {
             binding.reportFireButton?.visibility = View.INVISIBLE
             binding.ascFilterButton?.visibility = View.INVISIBLE
             binding.ascFilterButton?.visibility = View.INVISIBLE
+            binding.todayFilterButton?.visibility = View.INVISIBLE
+
         }
     }
 
@@ -109,11 +118,15 @@ class FiresListFragment : Fragment() {
             binding.reportFireButton.startAnimation(fromBottom)
             binding.ascFilterButton.startAnimation(fromBottom)
             binding.descFilterButton.startAnimation(fromBottom)
+            binding.todayFilterButton?.startAnimation(fromBottom)
+
         } else {
             binding.optionsButton.startAnimation(rotateClose)
             binding.reportFireButton.startAnimation(toBottom)
             binding.ascFilterButton.startAnimation(toBottom)
             binding.descFilterButton.startAnimation(toBottom)
+            binding.todayFilterButton?.startAnimation(toBottom)
+
         }
     }
 
@@ -122,10 +135,13 @@ class FiresListFragment : Fragment() {
             binding.reportFireButton.isClickable = true
             binding.ascFilterButton.isClickable = true
             binding.descFilterButton.isClickable = true
+            binding.todayFilterButton?.isClickable = true
+
         } else {
             binding.reportFireButton.isClickable = false
             binding.ascFilterButton.isClickable = false
             binding.descFilterButton.isClickable = false
+            binding.todayFilterButton?.isClickable = false
 
         }
     }

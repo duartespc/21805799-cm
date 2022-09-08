@@ -62,6 +62,10 @@ class FiresListAdapter(
         return searchFilter
     }
 
+    fun getTodayFilter(): Filter {
+        return todayFilter
+    }
+
     fun getSortAscendingFilter(): Filter {
         return sortAscendingFilter
     }
@@ -76,7 +80,27 @@ class FiresListAdapter(
             filteredList.addAll(listFull)
 
             filteredList.sortBy {
-                parseInt(it.distanceFromMe)
+                it.date
+            }
+
+            val results = FilterResults()
+            results.values = filteredList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence, results: FilterResults) {
+            updateItems(results.values as List<FireUI>)
+            notifyDataSetChanged()
+        }
+    }
+
+    private val todayFilter: Filter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence): FilterResults {
+            val filteredList: MutableList<FireUI> = ArrayList()
+            for (fire in listFull) {
+                if (fire.date == "22-07-2022")
+                    filteredList.add(fire)
+
             }
 
             val results = FilterResults()
@@ -96,7 +120,7 @@ class FiresListAdapter(
             filteredList.addAll(listFull)
 
             filteredList.sortByDescending {
-                parseInt(it.distanceFromMe)
+                it.date
             }
 
             val results = FilterResults()

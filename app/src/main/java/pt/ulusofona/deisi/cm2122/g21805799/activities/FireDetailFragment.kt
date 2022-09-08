@@ -39,6 +39,9 @@ class FireDetailFragment : Fragment() {
             binding.observations.text = it.observations
             binding.name.text = it.name
             binding.cc.text = it.cc
+            if (it.name == "ReportaJa") {
+                binding.district.setTextColor(requireContext().getColor(R.color.red))
+            }
         }
     }
 

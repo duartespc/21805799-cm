@@ -65,4 +65,5 @@
     <string name="farther">Farther to me</string>
     <string name="report_now_dialog_message">You are going to report a fire at your current location. Are you sure?</string>
     <string name="reported">Reported</string>
+    <string name="turn_off_reportaja">Disable \'ReportaJa\" function</string>
 </resources>

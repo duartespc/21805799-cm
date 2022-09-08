@@ -23,6 +23,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
@@ -34,8 +35,7 @@ import pt.ulusofona.deisi.cm2122.g21805799.model.Fire
 import pt.ulusofona.deisi.cm2122.g21805799.R
 import pt.ulusofona.deisi.cm2122.g21805799.data.FiresRepository
 import pt.ulusofona.deisi.cm2122.g21805799.databinding.FragmentFireFormBinding
-import java.lang.Integer.parseInt
-import java.lang.Long.parseLong
+import pt.ulusofona.deisi.cm2122.g21805799.ui.viewModels.FiresViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
@@ -52,11 +52,13 @@ class FireFormFragment : Fragment() {
     lateinit var reportNowButton: Button
     lateinit var builder: AlertDialog.Builder
     lateinit var district: EditText
+    lateinit var districtFromApi: String
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private val permissionId = 2
+    private lateinit var viewModel: FiresViewModel
+
 
     private var districtLocation: HashMap<String, LatLng> = HashMap()
-
 
     private var districtsPortugal: HashSet<String> = hashSetOf("aveiro","beja","braga","bragança","castelo Branco","coimbra","évora",
         "faro","guarda","leiria","lisboa","portalegre","porto","santarém","setúbal","viana do Castelo","vila Real","viseu")
@@ -101,6 +103,7 @@ class FireFormFragment : Fragment() {
         builder = AlertDialog.Builder(context)
         builder.setMessage(getString(R.string.dialog_message)) .setTitle(getString(R.string.dialog_title))
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        viewModel = ViewModelProvider(this).get(FiresViewModel::class.java)
         return binding.root
     }
 
@@ -114,13 +117,23 @@ class FireFormFragment : Fragment() {
         districtLocation.put("porto", LatLng(41.1621376,-8.6569731))
 
         binding.submitButton.setOnClickListener { onSubmit() }
-        binding.reportNowButton.setOnClickListener { onReportNow() }
 
         name = binding.name
         cc = binding.cc
         submitButton = binding.submitButton
         reportNowButton = binding.reportNowButton
         district = binding.district
+
+        FiresRepository.getInstance().isReportaJaOn {
+            if (it) {
+                binding.reportNowButton?.visibility = View.VISIBLE
+                binding.reportNowButton.setOnClickListener { onReportNow() }
+            } else {
+                binding.reportNowButton?.visibility = View.INVISIBLE
+
+            }
+        }
+
     }
 
     private fun isEmpty(text: EditText): Boolean {
@@ -166,7 +179,7 @@ class FireFormFragment : Fragment() {
                                 Toast.LENGTH_SHORT).show()
                         model.insertFire(
                             Fire("Manual", entryCurrentDate, entryCurrentTime, "", 0, 0, 0, district.text.toString(), "", "", latitude, longitude,
-                                0, "Em Curso", "", "", true, Date().time.toInt(), Date().time.toInt(), getString(R.string.not_available), name.text.toString(), cc.text.toString())) {
+                                0, "Em Curso", getString(R.string.not_available), getString(R.string.not_available), true, Date().time.toInt(), Date().time.toInt(), getString(R.string.not_available), name.text.toString(), cc.text.toString())) {
                         }
                         activity?.onBackPressed()
                     }
@@ -187,10 +200,13 @@ class FireFormFragment : Fragment() {
                 mFusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
                     val location: Location? = task.result
                     if (location != null) {
+                        model.getDistrict(location.latitude.toString(), location.longitude.toString()) {
+                            districtFromApi = it
+                        }
                         val geocoder = Geocoder(requireContext(), Locale.getDefault())
                         val list: List<Address> =
                             geocoder.getFromLocation(location.latitude, location.longitude, 1)
-
+                        //model.getDistrict()
                         if (!list.isEmpty()) {
                             val entryCurrentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
                             val entryCurrentTime: String = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
@@ -200,8 +216,8 @@ class FireFormFragment : Fragment() {
                                     Toast.makeText(activity, getString(R.string.yes_choice),
                                         Toast.LENGTH_SHORT).show()
                                     model.insertFire(
-                                        Fire("Manual", entryCurrentDate, entryCurrentTime, list[0].locality, -1, -1, -1, context?.resources!!.getString(R.string.not_available), context?.resources!!.getString(R.string.not_available), context?.resources!!.getString(R.string.not_available), list[0].latitude, list[0].longitude,
-                                            0, context?.resources!!.getString(R.string.reported), list[0].subLocality.orEmpty(), list[0].getAddressLine(0).orEmpty(), true, Date().time.toInt(), Date().time.toInt(), context?.resources!!.getString(R.string.not_available), "ReportaJa", "000000000")) {
+                                        Fire("Manual", entryCurrentDate, entryCurrentTime, list[0].locality, -1, -1, -1, districtFromApi, context?.resources!!.getString(R.string.not_available), context?.resources!!.getString(R.string.not_available), list[0].latitude, list[0].longitude,
+                                            0, context?.resources!!.getString(R.string.reported), context?.resources!!.getString(R.string.not_available), context?.resources!!.getString(R.string.not_available), true, Date().time.toInt(), Date().time.toInt(), context?.resources!!.getString(R.string.not_available), "ReportaJa", "000000000")) {
                                     }
                                     activity?.onBackPressed()
                                 }

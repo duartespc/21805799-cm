@@ -10,6 +10,8 @@ import pt.ulusofona.deisi.cm2122.g21805799.data.remote.RetrofitBuilder
 
 class FiresApplication : Application() {
 
+
+
     override fun onCreate() {
         super.onCreate()
         FiresRepository.init(
@@ -19,4 +21,6 @@ class FiresApplication : Application() {
         )
         Log.i("APP", "Initialized repository")
     }
+
+
 }

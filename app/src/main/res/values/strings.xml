@@ -79,6 +79,7 @@
     <string name="farther">Mais longe de mim</string>
     <string name="report_now_dialog_message">Vai reportar um fogo na sua localização atual. Deseja confirmar?</string>
     <string name="reported">Reportado</string>
+    <string name="turn_off_reportaja">Desligar a funcionalidade \"ReportaJa\"</string>
 
 
 </resources>

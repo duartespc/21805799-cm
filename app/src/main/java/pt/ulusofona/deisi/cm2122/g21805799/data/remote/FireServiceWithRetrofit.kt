@@ -1,5 +1,10 @@
 package pt.ulusofona.deisi.cm2122.g21805799.data.remote
 
+import com.google.gson.Gson
+import okhttp3.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.IOException
 import android.content.Context
 import android.content.res.Resources
 import android.util.Log
@@ -11,7 +16,49 @@ import pt.ulusofona.deisi.cm2122.g21805799.model.DataManager
 import pt.ulusofona.deisi.cm2122.g21805799.model.Fire
 import retrofit2.Retrofit
 
+
 class FireServiceWithRetrofit(val retrofit: Retrofit, val context: Context): DataManager() {
+
+    override fun getReportedByMeFires(onFinished: (String) -> Unit) {
+        throw Exception("Illegal operation")
+    }
+
+
+    override fun getDistrict(latitude: String, longitude: String, onFinished: (String) -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val client = OkHttpClient()
+                val request: Request = Request.Builder()
+                    .url("https://geoapi.pt/gps/$latitude,$longitude")
+                    .addHeader("Accept", "application/json")
+                    .build()
+
+                client.newCall(request).enqueue(object : Callback {
+                    override fun onFailure(call: Call, e: IOException) {
+                        e.printStackTrace()
+                    }
+
+                    override fun onResponse(call: Call, response: Response) {
+                        response.use {
+                            if (!response.isSuccessful) throw IOException("Unexpected code $response")
+                            val body = response.body?.string()
+                            if (body != null) {
+                                val jsonObject = JSONObject(body)
+                                val jsonDistrict = jsonObject["distrito"] as String
+                                Log.i("APP", "distrito = ${jsonDistrict}")
+                                onFinished(jsonDistrict)
+                            }
+
+                        }
+                    }
+                })
+
+            } catch (e: Exception) { // TENTEI SUBSTITUIR HttpException por Exception geral
+                Log.i("APP", "CATCHED HTTPEXCEPTION calling getRisk(municipality)")
+                onFinished("Error")  // This should be handled with a onError() callback
+            }
+        }
+    }
 
     override fun insertAllFires(fires: List<Fire>, onFinished: () -> Unit) {
         throw Exception("Illegal operation")
